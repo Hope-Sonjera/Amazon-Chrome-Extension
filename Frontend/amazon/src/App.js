@@ -1,5 +1,6 @@
+// App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Login from './components/login';
 import Signup from './components/signup';
 import ProductList from './components/productList';
@@ -24,9 +25,11 @@ const App = () => {
 
         <hr />
 
-        <Route exact path="/" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/products" component={ProductList} />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/products" element={<ProductList />} />
+        </Routes>
       </div>
     </Router>
   );
