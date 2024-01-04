@@ -7,9 +7,16 @@ const routes = require('./routes');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+const MONGODB_URI = 'mongodb://localhost:27017/AmazonScraper';
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
 });
 
 // Middleware
